@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GamePauseUI : MonoBehaviour {
 
@@ -19,7 +21,8 @@ public class GamePauseUI : MonoBehaviour {
         });
 
         optionsButton.onClick.AddListener(() => {
-            OptionsUI.Instance.Show();
+            Hide();
+            OptionsUI.Instance.Show(Show);
         });
     }
 
@@ -44,6 +47,8 @@ public class GamePauseUI : MonoBehaviour {
     // Show()
     private void Show() {
         gameObject.SetActive(true);
+
+        resumeButton.Select();
     } 
 
     // Hide()
