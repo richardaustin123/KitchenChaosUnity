@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 // Static = not attatched to any instance of a class
 public static class Loader {
 
+    // Enums
     public enum Scene {
         MainMenuScene,
         GameScene,
@@ -15,12 +16,14 @@ public static class Loader {
 
     private static Scene targetScene;
     
+    // Load()
     public static void Load(Scene targetScene) {
         Loader.targetScene = targetScene;
 
         SceneManager.LoadScene(Scene.LoadingScene.ToString());
     }
 
+    // LoaderCallback()
     public static void LoaderCallback() {
         SceneManager.LoadScene(targetScene.ToString());
     }

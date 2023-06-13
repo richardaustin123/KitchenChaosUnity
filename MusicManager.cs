@@ -12,6 +12,7 @@ public class MusicManager : MonoBehaviour {
     private AudioSource audioSource;
     private float volume = 0.3f;
 
+    // Awake()
     private void Awake() {
         Instance = this;
         audioSource = GetComponent<AudioSource>();
@@ -20,6 +21,7 @@ public class MusicManager : MonoBehaviour {
         audioSource.volume = volume;
     }
 
+    // ChangeVolume()
     public void ChangeVolume() {
         volume += .1f;
         if (volume > 1f) {
@@ -31,6 +33,7 @@ public class MusicManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
+    // GetVolume()  
     public float GetVolume() {
         return volume;
     }

@@ -6,6 +6,7 @@ public class LoaderCallback : MonoBehaviour {
 
     private bool isFirstUpdate = true;
 
+    // Update()
     private void Update() {
         if (isFirstUpdate) {
             isFirstUpdate = false;

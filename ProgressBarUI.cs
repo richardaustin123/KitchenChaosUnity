@@ -36,10 +36,12 @@ public class ProgressBarUI : MonoBehaviour {
         }
     }
 
+    // Show()
     private void Show() {
         gameObject.SetActive(true);
     }
 
+    // Hide()
     private void Hide() {
         gameObject.SetActive(false);
     }

@@ -10,10 +10,12 @@ public class DeliveryManagerSingleUI : MonoBehaviour {
     [SerializeField] private Transform iconContainer;
     [SerializeField] private Transform iconTemplate;
 
+    // Awake()
     private void Awake() {
         iconTemplate.gameObject.SetActive(false);
     }
 
+    // SetRecipeSO()
     public void SetRecipeSO(RecipeSO recipeSO) {
         recipeNameText.text = recipeSO.recipeName;
 

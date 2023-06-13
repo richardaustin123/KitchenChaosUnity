@@ -38,6 +38,7 @@ public class OptionsUI : MonoBehaviour {
 
     private Action onCloseButtonAction;
 
+    // Awake()
     private void Awake() {
         Instance = this;
 
@@ -69,6 +70,7 @@ public class OptionsUI : MonoBehaviour {
         
     }
 
+    // Start()
     private void Start() {
         KitchenGameManager.Instance.OnGamePaused += KitchenGameManager_OnGamePaused;
 
@@ -78,10 +80,12 @@ public class OptionsUI : MonoBehaviour {
         Hide();
     }
 
+    // KitchenGameManager_OnGamePaused()
     private void KitchenGameManager_OnGamePaused(object sender, System.EventArgs e) {
         Hide();
     }
 
+    // UpdateVisual()
     private void UpdateVisual() {
         soundEffectsText.text = "Sound Effects: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
         musicText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
@@ -98,6 +102,7 @@ public class OptionsUI : MonoBehaviour {
         gamepadPauseText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Gamepad_Pause);
     }
 
+    // Show()
     public void Show(Action onCloseButtonAction) {
         this.onCloseButtonAction = onCloseButtonAction;
         gameObject.SetActive(true);
@@ -105,19 +110,22 @@ public class OptionsUI : MonoBehaviour {
         soundEffectsButton.Select();
     }
 
+    // Hide()
     public void Hide() {
         gameObject.SetActive(false);
     }
 
+    // ShowPressToRebindKey()
     public void ShowPressToRebindKey() {
         pressToRebindKeyTransform.gameObject.SetActive(true);
-        // pressToRebindKeyTransform.position = GetBindingButton(binding).transform.position;
     }
 
+    // HidePressToRebindKey()
     public void HidePressToRebindKey() {
         pressToRebindKeyTransform.gameObject.SetActive(false);
     }
 
+    // RebindBinding()
     private void RebindBinding(GameInput.Binding binding) {
         ShowPressToRebindKey();
         GameInput.Instance.RebindBinding(binding, () => {

@@ -7,6 +7,7 @@ public class GamePlayingClockUI : MonoBehaviour {
 
     [SerializeField] private Image timerImage;
 
+    // Update()
     private void Update() {
         timerImage.fillAmount = KitchenGameManager.Instance.GetGamePlayingTimerNormalized();
     }

@@ -16,6 +16,7 @@ public class PlatesCounter : BaseCounter {
     private int plateSpawnedAmount;
     private int plateSpawnedAmountMax = 4;
 
+    // Update()
     private void Update() {
         spawnPlateTimer += Time.deltaTime;
         if (spawnPlateTimer > spawnPlateTimerMax) {
@@ -25,12 +26,11 @@ public class PlatesCounter : BaseCounter {
                 plateSpawnedAmount++;
 
                 OnPlateSpawned?.Invoke(this, EventArgs.Empty);
-                // OnPlateSpawned?.Invoke(this, new OnPlateSpawnedEventArgs(plateKitchenObjectSO));
-                // SpawnPlate();
             }
         }
     }
 
+    // private void SpawnPlate() {
     public override void Interact(Player player) {
         if (!player.HasKitchenObject()) {
             // Player is not carrying anything
@@ -38,9 +38,7 @@ public class PlatesCounter : BaseCounter {
                 // There is a plate on the counter
                 // Pick up the plate
                 plateSpawnedAmount--;
-
                 KitchenObject.SpawnKitchenObject(plateKitchenObjectSO, player);
-
                 OnPlateRemoved?.Invoke(this, EventArgs.Empty);
             } else {
                 // There is no plate on the counter
@@ -48,4 +46,5 @@ public class PlatesCounter : BaseCounter {
             }
         }
     }
+    
 }

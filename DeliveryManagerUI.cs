@@ -7,10 +7,12 @@ public class DeliveryManagerUI : MonoBehaviour {
     [SerializeField] private Transform container;
     [SerializeField] private Transform recipeTemplate;
 
+    // Awake()
     private void Awake() {
         recipeTemplate.gameObject.SetActive(false);
     }
 
+    // Start()
     private void Start() {
         DeliveryManager.Instance.OnRecipeSpawned    += DeliveryManager_OnRecipeSpawned;
         DeliveryManager.Instance.OnRecipeCompleted  += DeliveryManager_OnRecipeCompleted;
@@ -18,14 +20,17 @@ public class DeliveryManagerUI : MonoBehaviour {
         UpdateVisual();
     }
 
+    // DeliveryManager_OnRecipeSpawned()
     private void DeliveryManager_OnRecipeSpawned(object sender,   System.EventArgs e) {
         UpdateVisual();
     }
 
+    // DeliveryManager_OnRecipeCompleted()
     private void DeliveryManager_OnRecipeCompleted(object sender, System.EventArgs e) {
         UpdateVisual();
     }
 
+    // UpdateVisual()
     private void UpdateVisual() {
         foreach(Transform child in container) {
             if (child == recipeTemplate) continue;

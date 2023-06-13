@@ -14,10 +14,12 @@ public class PlateKitchenObject : KitchenObject {
 
     private List<KitchenObjectSO> kitchenObjectSOList;
 
+    // Awake()
     private void Awake() {
         kitchenObjectSOList = new List<KitchenObjectSO>();
     }
 
+    // TryAddIngredient()
     public bool TryAddIngredient(KitchenObjectSO kitchenObjectSO) {
         if (!validKitchenObjectSOList.Contains(kitchenObjectSO)) {
             // Not a valid ingredient
@@ -25,17 +27,18 @@ public class PlateKitchenObject : KitchenObject {
         }
         if (kitchenObjectSOList.Contains(kitchenObjectSO)) {
             return false;
-        } else {
+        } 
+        else {
             kitchenObjectSOList.Add(kitchenObjectSO);
 
             OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs { 
                 kitchenObjectSO = kitchenObjectSO 
             });
-
             return true;
         }
     }
 
+    // GetKitchenObjectSOList()
     public List<KitchenObjectSO> GetKitchenObjectSOList() {
         return kitchenObjectSOList;
     }

@@ -10,7 +10,6 @@ public class ClearCounter : BaseCounter {
     public override void Interact(Player player) {
         if (!HasKitchenObject()) {
             //there is no kitchen object on the counter
-            // ClearKitchenObject();
             if (player.HasKitchenObject()) {
                 // Player is carrying something
                 player.GetKitchenObject().SetKitchenObjectParent(this);
@@ -19,8 +18,6 @@ public class ClearCounter : BaseCounter {
                 // Do nothing
             }
         } else {
-            // Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
-            // kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
             if (player.HasKitchenObject()) {
                 // Player is carrying something
                 if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {
@@ -28,9 +25,8 @@ public class ClearCounter : BaseCounter {
                     if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO())) {
                         // Ingredient was added to the plate
                         GetKitchenObject().DestroySelf();
-                    } // else Ingredient was not added to the plate, Do nothing
-                } else {
-                    // Player is carrying something that is not a plate
+                    }    // else Ingredient was not added to the plate, Do nothing
+                } else { // Player is carrying something that is not a plate
                     if (GetKitchenObject().TryGetPlate(out plateKitchenObject)) {
                         // Kitchen object on the counter is a plate
                         if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO())) {
@@ -39,8 +35,7 @@ public class ClearCounter : BaseCounter {
                         } 
                     }
                 }
-            } else {
-                // Player is not carrying anything
+            } else { // Player is not carrying anything
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }

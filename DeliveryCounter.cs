@@ -6,10 +6,12 @@ public class DeliveryCounter : BaseCounter {
 
     public static DeliveryCounter Instance { get; private set; }
 
+    // Awake()
     private void Awake() {
         Instance = this;
     }
 
+    // Interact()
     public override void Interact(Player player) {
         if (player.HasKitchenObject()) {
             if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {

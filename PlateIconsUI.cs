@@ -7,6 +7,7 @@ public class PlateIconsUI : MonoBehaviour {
     [SerializeField] private PlateKitchenObject plateKitchenObject;
     [SerializeField] private Transform iconTemplate;
 
+    // Awake()
     private void Awake() {
         // Hide the icon template at the start when no item is currently on the plate
         iconTemplate.gameObject.SetActive(false);

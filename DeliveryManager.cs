@@ -20,11 +20,13 @@ public class DeliveryManager : MonoBehaviour {
     private int waitingRecipesMax = 4;
     private int successfulRecipesAmount;
 
+    // Awake()
     private void Awake() {
         Instance = this;
         waitingRecipeSOList = new List<RecipeSO>();
     }
 
+    // Update()
     private void Update() {
         spawnRecipeTimer -= Time.deltaTime;
         if (spawnRecipeTimer <= 0f) {
@@ -39,6 +41,7 @@ public class DeliveryManager : MonoBehaviour {
         }
     }
 
+    // DeliverRecipe()
     public void DeliverRecipe(PlateKitchenObject plateKitchenObject) {
         for (int i=0; i < waitingRecipeSOList.Count; i++) {
             RecipeSO waitingRecipeSO = waitingRecipeSOList[i];
@@ -80,10 +83,12 @@ public class DeliveryManager : MonoBehaviour {
         OnRecipeFailed?.Invoke(this, EventArgs.Empty);
     }
 
+    // GetWaitingRecipeSOList()
     public List<RecipeSO> GetWaitingRecipeSOList() {
         return waitingRecipeSOList;
     }
 
+    // GetSuccessfulRecipesAmount()
     public int GetSuccessfulRecipesAmount() {
         return successfulRecipesAmount;
     }

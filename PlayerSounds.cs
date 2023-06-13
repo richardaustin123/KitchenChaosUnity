@@ -8,17 +8,18 @@ public class PlayerSounds : MonoBehaviour {
     private float footstepTimer;
     private float footstepTimerMax = 0.1f;
 
+    // Awake()
     private void Awake() {
         player = GetComponent<Player>();
     }
 
+    // Update()
     private void Update() {
         footstepTimer -= Time.deltaTime;
         if (footstepTimer < 0f) {
             footstepTimer = footstepTimerMax;
 
             if (player.IsWalking()) {
-                Debug.Log("Player is walking");
                 float volume = 1f;
                 SoundManager.Instance.PlayFootstepsSound(player.transform.position, volume);
             }

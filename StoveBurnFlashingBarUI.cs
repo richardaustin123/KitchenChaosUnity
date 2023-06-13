@@ -11,16 +11,19 @@ public class StoveBurnFlashingBarUI : MonoBehaviour {
 
     private Animator animator;
 
+    // Awake()
     private void Awake() {
         animator = GetComponent<Animator>();
     }
 
+    // Start()
     private void Start() {
         stoveCounter.OnProgressChanged += StoveCounter_OnProgressChanged;
         // Set flashing bar to false at start
         animator.SetBool(IS_FLASHING, false);
     }
 
+    // StoveCounter_OnProgressChanged()
     private void StoveCounter_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e) {
         float burnShowProgressAmount = 0.5f;
         bool show = stoveCounter.IsFried() && e.progressNormalized >= burnShowProgressAmount;

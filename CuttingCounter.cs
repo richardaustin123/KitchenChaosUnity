@@ -43,8 +43,6 @@ public class CuttingCounter : BaseCounter, IHasProgress {
                 // Do nothing
             }
         } else {
-            // Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
-            // kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
             if (player.HasKitchenObject()) {
                 // Player is carrying something
                 if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {
@@ -52,10 +50,9 @@ public class CuttingCounter : BaseCounter, IHasProgress {
                     if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO())) {
                         // Ingredient was added to the plate
                         GetKitchenObject().DestroySelf();
-                    } // else Ingredient was not added to the plate, Do nothing
+                    }   // else Ingredient was not added to the plate, Do nothing
                 }
-            } else {
-                // Player is not carrying anything
+            } else { // Player is not carrying anything
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }

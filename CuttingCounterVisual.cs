@@ -10,14 +10,17 @@ public class CuttingCounterVisual : MonoBehaviour {
 
     private Animator animator;
 
+    // Awake()
     private void Awake() {
         animator = GetComponent<Animator>();
     }
 
+    // Start()
     private void Start() {
         cuttingCounter.OnCut += CuttingCounter_OnCut;
     }
 
+    // CuttingCounter_OnCut()
     private void CuttingCounter_OnCut(object sender, System.EventArgs e) {
         animator.SetTrigger(CUT);
     }

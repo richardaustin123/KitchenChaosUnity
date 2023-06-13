@@ -11,6 +11,7 @@ public class StoveCounter : BaseCounter, IHasProgress {
         public State state;
     }
 
+    // Enums
     public enum State {
         Idle, 
         Frying,
@@ -55,7 +56,6 @@ public class StoveCounter : BaseCounter, IHasProgress {
     // UpdateFrying()
     private void UpdateFrying() {
         fryingTimer += Time.deltaTime;
-
 
         OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs { 
             progressNormalized = fryingTimer / fryingRecipeSO.fryingTimerMax
@@ -135,6 +135,7 @@ public class StoveCounter : BaseCounter, IHasProgress {
                 // Do nothing
             }
         } else {
+
             if (player.HasKitchenObject()) {
                 // Player is carrying something
                 if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {
@@ -154,6 +155,7 @@ public class StoveCounter : BaseCounter, IHasProgress {
                         });
                     } // else Ingredient was not added to the plate, Do nothing
                 }
+                
             } else {
                 // Player is not carrying anything
                 GetKitchenObject().SetKitchenObjectParent(player);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ResetStaticDataManager : MonoBehaviour {
 
+    // Awake()
     private void Awake() {
         CuttingCounter.ResetStaticData();
         BaseCounter.ResetStaticData();

@@ -8,10 +8,12 @@ public class KitchenObject : MonoBehaviour {
 
     private IKitchenObjectParent kitchenObjectParent;
 
+    // GetKitchenObjectSO()
     public KitchenObjectSO GetKitchenObjectSO() {
         return kitchenObjectSO;
     }
 
+    // SetKitchenObjectParent()
     public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
         // If there is already a clear counter, clear it
         if (this.kitchenObjectParent != null) {
@@ -32,15 +34,18 @@ public class KitchenObject : MonoBehaviour {
         transform.localPosition = Vector3.zero;
     }
 
+    // GetkitchenObjectParent()
     public IKitchenObjectParent GetkitchenObjectParent() {
         return kitchenObjectParent;
     }
 
+    // DestroySelf()
     public void DestroySelf() {
         kitchenObjectParent.ClearKitchenObject();
         Destroy(gameObject);
     }
 
+    // TryGetPlate()
     public bool TryGetPlate(out PlateKitchenObject plateKitchenObject) {
         if (this is PlateKitchenObject) {
             plateKitchenObject = this as PlateKitchenObject;
@@ -51,6 +56,7 @@ public class KitchenObject : MonoBehaviour {
         }
     }
 
+    // SpawnKitchenObject()
     public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent) {
         Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
         KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();

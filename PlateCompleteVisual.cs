@@ -14,6 +14,7 @@ public class PlateCompleteVisual : MonoBehaviour {
     [SerializeField] private PlateKitchenObject plateKitchenObject;
     [SerializeField] private List<KitchenObjectSO_GameObject> kitchenObjectSOGameObjectList;
 
+    // Start()
     private void Start() {
         plateKitchenObject.OnIngredientAdded += PlateKitchenObject_OnIngredientAdded;
 
@@ -23,6 +24,7 @@ public class PlateCompleteVisual : MonoBehaviour {
         }
     }
 
+    // PlateKitchenObject_OnIngredientAdded()
     private void PlateKitchenObject_OnIngredientAdded(object sender, PlateKitchenObject.OnIngredientAddedEventArgs e) {
         foreach (KitchenObjectSO_GameObject kitchenObjectSOGameObject in kitchenObjectSOGameObjectList) {
             if (kitchenObjectSOGameObject.kitchenObjectSO == e.kitchenObjectSO) {

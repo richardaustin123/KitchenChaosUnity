@@ -11,6 +11,7 @@ public class KitchenGameManager : MonoBehaviour {
     public event EventHandler OnGamePaused;
     public event EventHandler OnGameUnpaused;
 
+    // Enums
     private enum State {
         WaitingToStart,
         CoutndownToStart,
@@ -24,20 +25,24 @@ public class KitchenGameManager : MonoBehaviour {
     private float gamePlayingTimerMax = 30f;
     private bool isGamePaused = false;
 
+    // Awake()
     private void Awake() {
         Instance = this;
         state = State.WaitingToStart;
     }
 
+    // Start()
     private void Start() {
         GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
     }
 
+    // GameInput_OnPauseAction()
     private void GameInput_OnPauseAction(object sender, EventArgs e) {
         TogglePauseGame();
     }
 
+    // GameInput_OnInteractAction()
     private void GameInput_OnInteractAction(object sender, EventArgs e) {
         if (state == State.WaitingToStart) {
             state = State.CoutndownToStart;
@@ -45,6 +50,7 @@ public class KitchenGameManager : MonoBehaviour {
         }
     }
 
+    // Update()
     private void Update() {
         switch (state) {
             case State.WaitingToStart:
@@ -70,26 +76,32 @@ public class KitchenGameManager : MonoBehaviour {
 
     }
 
+    // IsGamePlaying()
     public bool IsGamePlaying() {
         return state == State.GamePlaying;
     }
 
+    // IsCountdownToStartActive()
     public bool IsCountdownToStartActive() {
         return state == State.CoutndownToStart;
     }
 
+    // GetCountdownToStartTimer()
     public float GetCountdownToStartTimer() {
         return countdownToStartTimer;
     }
 
+    // IsGameOver()
     public bool IsGameOver() {
         return state == State.GameOver;
     }
 
+    // GetGamePlayingTimerNormalized()
     public float GetGamePlayingTimerNormalized() {
         return 1 - (gamePlayingTimer / gamePlayingTimerMax);
     }
 
+    // TogglePauseGame()
     public void TogglePauseGame() {
         isGamePaused = !isGamePaused;
 

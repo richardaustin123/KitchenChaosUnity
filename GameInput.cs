@@ -15,6 +15,7 @@ public class GameInput : MonoBehaviour {
     public event EventHandler OnPauseAction;
     public event EventHandler OnBindingRebind;
 
+    // Enums
     public enum Binding {
         MoveUp,
         MoveDown,
@@ -80,6 +81,7 @@ public class GameInput : MonoBehaviour {
         return inputVector;
     }
 
+    // GetBindingText()
     public string GetBindingText(Binding binding) {
         switch (binding) {
             default:
@@ -106,6 +108,7 @@ public class GameInput : MonoBehaviour {
         }
     }
 
+    // RebindBinding()
     public void RebindBinding(Binding binding, Action onActionRebound) {
         playerInputActions.Player.Disable();
 
